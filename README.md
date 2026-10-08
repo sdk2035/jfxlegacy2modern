@@ -14,7 +14,7 @@
 
 This checkout contains a reference README and Draw.io architecture assets. The agents, CLI, deployment manifests and integrations described below are **proposed capabilities**, not verified implementations. Installation and usage commands are illustrative until corresponding code is delivered. The Mermaid diagrams describe the intended design, not a running deployment.
 
-The reference also covers the [reverse-engineering transition with UML and an MPL extension point](docs/enterprise-ai-reference.md#10-transición-desde-ingeniería-inversa-uml-y-mpl).
+The reference also covers the [reverse-engineering transition with UML and Rascal MPL](docs/enterprise-ai-reference.md#10-transición-desde-ingeniería-inversa-uml-y-mpl).
 
 See the [enterprise architecture and AI-assisted development reference](docs/enterprise-ai-reference.md) for Java, .NET and other open-source ecosystems.
 
@@ -516,21 +516,20 @@ flowchart TB
 
 # Intermediate Representation
 
-A key architectural capability should be an intermediate software representation.
+A key architectural capability should be an intermediate software representation. **MPL means Rascal Meta Programming Language in this design.** Rascal is the proposed metaprogramming layer for language-specific ASTs, resolved M3 facts and a project-defined normalized representation independent of concrete syntax. Language semantics and source provenance remain explicit; this is not a universal AST or an implemented integration.
+
+See [Rascal layers, Java/.NET adapters and UML mappings](docs/enterprise-ai-reference.md#106-capas-rascal-árbol-concreto-ast-y-modelo-semántico).
 
 ```mermaid
 flowchart TB
-    n0["Source Code"]
-    n1["Language Parser"]
-    n2["AST"]
-    n3["Semantic Model"]
-    n4["Architecture Model"]
-    n5["Target Code"]
-    n0 --> n1
-    n1 --> n2
-    n2 --> n3
-    n3 --> n4
-    n4 --> n5
+    source["Java / C# source and resolved dependencies"] --> adapter["Language-specific frontend"]
+    adapter --> ast["Language AST and resolved facts"]
+    ast --> rascal["Rascal MPL: analysis and normalization"]
+    rascal --> ir["Project IR with semantic extensions and provenance"]
+    ir --> uml["UML architecture projections"]
+    uml --> review["Reviewed target and platform mappings"]
+    review --> transformation["Rascal rules and platform recipes"]
+    transformation --> target["Target code: build and behavior checks"]
 ```
 
 The intermediate model enables multiple source-to-target transformations.
@@ -1208,6 +1207,7 @@ platform:
     - Graphviz
 
   transformation:
+    - Rascal MPL (proposed AST / M3 normalization)
     - OpenRewrite
     - AST transformations
     - LLM-generated transformations
