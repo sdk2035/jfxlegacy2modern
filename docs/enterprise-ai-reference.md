@@ -190,7 +190,9 @@ Antes de publicar, analizar la sintaxis con una versión fijada de Mermaid y rev
 
 ## 10. Transición desde ingeniería inversa: UML y MPL
 
-**MPL: sigla pendiente de definición por el equipo.** No se asume que sea equivalente a UML, MDA, un metamodelo o una licencia. Si designa un lenguaje propio, documentar su gramática, semántica, herramienta, versión y mapeo hacia UML antes de generar transformaciones. Mientras se concreta, el proceso usa un modelo intermedio neutral y UML; la integración MPL queda como punto de extensión propuesto.
+**MPL se define en este proyecto como Rascal Meta Programming Language (Rascal MPL).** La arquitectura propuesta emplea Rascal para analizar y transformar AST y hechos semánticos, con una representación normalizada independiente de la sintaxis concreta. La integración sigue siendo un diseño de referencia: este repositorio no contiene todavía extractores ni transformadores Rascal ejecutables.
+
+“Independiente de sintaxis” significa separar puntuación, disposición y detalles gramaticales del modelo de análisis; no significa eliminar la semántica del lenguaje. Los AST de Rascal M3 tienen un formato uniforme, pero no son un AST universal compartido automáticamente por Java y C# ([AST Java de Rascal](https://www.rascal-mpl.org/docs/Packages/org.rascalmpl.java-air/API/lang/java/m3/AST/)). La normalización entre lenguajes requiere reglas explícitas del proyecto.
 
 La ingeniería inversa es una fase de transición con entregables y criterios de salida. Su objetivo es recuperar la estructura y el comportamiento del sistema **as-is**, depurar hipótesis con expertos del negocio y construir un modelo **to-be** antes de transformar código. No basta con dibujar clases: deben recuperarse reglas, estados, transacciones, integraciones y restricciones de ejecución.
 
@@ -200,9 +202,10 @@ La ingeniería inversa es una fase de transición con entregables y criterios de
 
 ```mermaid
 flowchart TB
-    source["Código, configuración, esquema y contratos versionados"] --> static["Ingeniería inversa estática: AST, símbolos y dependencias"]
+    source["Código, configuración, esquema y contratos versionados"] --> static["Adaptadores Java / C#: AST y resolución semántica"]
     source --> dynamic["Ingeniería inversa dinámica: trazas y pruebas de caracterización"]
-    static --> evidence["Modelo recuperado con procedencia y confianza"]
+    static --> mpl["Rascal MPL: AST, hechos M3 y normalización"]
+    mpl --> evidence["Modelo recuperado con procedencia y confianza"]
     dynamic --> evidence
     evidence --> asis["UML as-is: estructura y comportamiento observados"]
     asis --> review{"Reglas y límites confirmados por expertos?"}
@@ -211,7 +214,7 @@ flowchart TB
     review -->|Sí| pim["Modelo de dominio independiente de plataforma"]
     pim --> mapping["Reglas de transformación y ADR"]
     mapping --> psm["Modelo to-be específico de Java o .NET"]
-    mpl["MPL: semántica y herramienta por definir"] -.-> mapping
+    mpl -.->|Reglas deterministas| mapping
     psm --> delta["Matriz as-is / to-be y plan por incrementos"]
     delta --> code["Ingeniería directa: recetas, adaptadores y código"]
     code --> validation{"Contratos y comportamiento preservados?"}
@@ -298,4 +301,70 @@ Ejemplo de fila de trazabilidad: `RULE-ORDER-01 → commit/archivo/símbolo orig
 - Matriz de diferencias y reglas de mapeo aceptadas para el primer incremento.
 - Estrategia de sincronización de modelos y código: evitar sobrescrituras mediante regeneración sin control.
 
-Opciones a evaluar: Eclipse Papyrus para UML, PlantUML para diagramas como texto y Mermaid para documentación GitHub. Verificar formatos y capacidades de intercambio de cada herramienta: una imagen Mermaid no constituye automáticamente un archivo UML/XMI. Una futura integración MPL deberá pasar sus propias pruebas de parseo, mapeo y preservación de significado.
+Opciones a evaluar: Eclipse Papyrus para UML, PlantUML para diagramas como texto y Mermaid para documentación GitHub. Verificar formatos y capacidades de intercambio de cada herramienta: una imagen Mermaid no constituye automáticamente un archivo UML/XMI. La integración Rascal MPL propuesta deberá pasar pruebas de extracción, normalización, transformación y preservación de significado.
+
+
+### 10.6 Capas Rascal: árbol concreto, AST y modelo semántico
+
+| Capa | Función | Independencia y límites |
+|---|---|---|
+| Árbol de análisis / CST | Representar la gramática y detalles textuales | Dependiente de la sintaxis concreta; conservarlo si se necesita fidelidad de formato |
+| AST por lenguaje | Representar construcciones relevantes mediante tipos algebraicos | Abstrae detalles textuales; conserva construcciones y diferencias del lenguaje |
+| Hechos M3 | Registrar declaraciones, usos, contención, tipos y diagnósticos | Forma común extensible; requiere extracción y resolución por lenguaje |
+| IR normalizada del proyecto | Exponer entidades, operaciones, puertos y relaciones comunes | Esquema propio versionado; conserva extensiones semánticas y elementos no soportados |
+| Proyección UML | Mostrar estructura y comportamiento recuperados | Vista selectiva con trazabilidad; no contiene toda la semántica ejecutable |
+
+Rascal permite construir AST a partir de árboles de análisis con `implode` cuando el tipo algebraico y la gramática son compatibles; no sustituye la resolución de símbolos ni normaliza automáticamente lenguajes ([ParseTree / implode](https://www.rascal-mpl.org/docs/Library/ParseTree/)). Los hechos M3 iniciales deben contener información extraída y resuelta; mantener inferencias arquitectónicas y propuestas de IA en una capa separada ([M3 Core](https://www.rascal-mpl.org/docs/Library/analysis/m3/Core/)).
+
+```mermaid
+flowchart TB
+    java["Fuentes Java y classpath"] --> jfront["Adaptador Java: extractor Rascal Java M3"]
+    csharp["Fuentes C# y referencias de solución"] --> cfront["Adaptador propuesto: Roslyn a Rascal"]
+    jfront --> jast["AST Java y hechos resueltos"]
+    cfront --> cast["AST C# y hechos resueltos"]
+    jast --> normalize["Rascal MPL: reglas de normalización versionadas"]
+    cast --> normalize
+    normalize --> ir["IR común con extensiones semánticas y procedencia"]
+    ir --> uml["Proyección UML as-is"]
+    ir --> facts["Análisis de dependencias y contratos"]
+    uml --> review["Revisión de dominio y arquitectura"]
+    facts --> review
+    review --> target["Modelo to-be y mapeos específicos"]
+    target --> rules["Transformaciones Rascal y recetas de plataforma"]
+    rules --> generation["Emisión o edición del código destino"]
+    generation --> validation["Compilación, contratos y pruebas diferenciales"]
+    ai["IA: hipótesis y propuestas separadas de hechos"] -.-> review
+```
+
+### 10.7 Contrato de adaptadores Java y .NET
+
+Para Java, evaluar el paquete Rascal Java M3 y fijar versiones de extractor, Rascal, JDK y classpath. Para .NET, el diseño propone un puente desde Roslyn hacia valores y relaciones Rascal; no se afirma que exista un adaptador C# listo en este repositorio.
+
+Cada adaptador entregará commit origen, versión del lenguaje, dependencias resueltas, AST por lenguaje, hechos con identificadores lógicos y ubicaciones físicas, y diagnósticos de extracción. Registrar cobertura y nodos no soportados; rechazar transformaciones cuando falte semántica necesaria. No perder información silenciosamente al normalizar.
+
+La IR común conservará identidad, firma, tipos, nulabilidad, efectos, contratos y referencias al origen. Las extensiones por lenguaje documentarán diferencias como excepciones, genéricos, precisión numérica, asincronía y gestión de recursos. Una relación de uso estático no demuestra una llamada efectiva en ejecución; completar secuencias y estados con trazas y pruebas.
+
+### 10.8 De AST a UML y de UML a código
+
+| Hecho o construcción | Vista UML candidata | Condición del mapeo |
+|---|---|---|
+| Tipo y miembros declarados | Clase y operaciones | Preservar identidad y firma; no inferir entidad de negocio por nombre |
+| Referencia o dependencia resuelta | Dependencia de paquete o componente | Agrupación por reglas explícitas; no equiparar import con llamada |
+| Herencia / implementación | Generalización / realización | Extraer relaciones específicas del lenguaje |
+| Colaboraciones observadas | Secuencia | Usar trazas con escenario y correlación; marcar inferencias |
+| Transiciones confirmadas | Máquina de estados | Requiere reglas y evidencia; no derivar de cualquier asignación |
+| Propiedad de ciclo de vida | Composición | Confirmar semántica; un campo no demuestra composición UML |
+
+UML sirve como contrato de diseño revisado. La transformación de regreso necesita un modelo específico de plataforma y reglas de generación; no asumir que el round-trip reconstruye el código original. Para refactorizaciones que deben preservar comentarios y formato, conservar el árbol concreto o aplicar ediciones localizadas con herramientas adecuadas.
+
+Trazabilidad propuesta: `commit + ubicación → AST por lenguaje → hecho M3 → elemento IR → elemento UML → ADR → regla Rascal/receta → símbolo destino → prueba`. Los identificadores se mantienen o migran explícitamente cuando se renombra un símbolo.
+
+### 10.9 Validación y entregables de la integración propuesta
+
+1. Fixtures por lenguaje con símbolos, tipos y referencias esperados, incluidos casos no soportados.
+2. Pruebas de normalización: variantes textuales equivalentes deben producir la misma estructura relevante; diferencias semánticas deben seguir distinguiéndose.
+3. Pruebas de consistencia entre hechos, IR y proyección UML, con trazabilidad completa para los elementos transformados.
+4. Pruebas de cada regla Rascal: precondiciones, postcondiciones, diagnósticos y comportamiento ante entradas incompletas.
+5. Compilación y pruebas diferenciales del código emitido con versiones fijadas; registrar efectos sobre datos y contratos.
+
+Entregables futuros: esquema de IR, contrato de adaptadores, módulos Rascal, fixtures, mapeos UML y reporte de procedencia. Estos son criterios de implementación futura, no resultados obtenidos en esta actualización documental.
