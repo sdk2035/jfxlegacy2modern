@@ -10,12 +10,21 @@
 
 ---
 
+## Repository Status
+
+This checkout contains a reference README and Draw.io architecture assets. The agents, CLI, deployment manifests and integrations described below are **proposed capabilities**, not verified implementations. Installation and usage commands are illustrative until corresponding code is delivered. The Mermaid diagrams describe the intended design, not a running deployment.
+
+The reference also covers the [reverse-engineering transition with UML and an MPL extension point](docs/enterprise-ai-reference.md#10-transición-desde-ingeniería-inversa-uml-y-mpl).
+
+See the [enterprise architecture and AI-assisted development reference](docs/enterprise-ai-reference.md) for Java, .NET and other open-source ecosystems.
+
 ## Table of Contents
 
 - [Description and Context](#description-and-context)
 - [Problem Statement](#problem-statement)
 - [Objectives](#objectives)
 - [Functional Scope](#functional-scope)
+- [Enterprise AI Development Reference](docs/enterprise-ai-reference.md)
 - [Architecture](#architecture)
 - [AI Agent Platform](#ai-agent-platform)
 - [Legacy Modernization Pipeline](#legacy-modernization-pipeline)
@@ -102,38 +111,29 @@ Traditional modernization projects require significant manual effort.
 
 Typical migration activities include:
 
-```text
-Legacy System
-     │
-     ▼
-Source Analysis
-     │
-     ▼
-Architecture Recovery
-     │
-     ▼
-Dependency Analysis
-     │
-     ▼
-Business Rule Extraction
-     │
-     ▼
-Refactoring
-     │
-     ▼
-Target Architecture
-     │
-     ▼
-Code Transformation
-     │
-     ▼
-Testing
-     │
-     ▼
-Validation
-     │
-     ▼
-Production Migration
+```mermaid
+flowchart TB
+    n0["Legacy System"]
+    n1["Source Analysis"]
+    n2["Architecture Recovery"]
+    n3["Dependency Analysis"]
+    n4["Business Rule Extraction"]
+    n5["Refactoring"]
+    n6["Target Architecture"]
+    n7["Code Transformation"]
+    n8["Testing"]
+    n9["Validation"]
+    n10["Production Migration"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
+    n5 --> n6
+    n6 --> n7
+    n7 --> n8
+    n8 --> n9
+    n9 --> n10
 ```
 
 JFXLEGACY2MODERN introduces AI agents into this lifecycle.
@@ -215,20 +215,17 @@ JFXLEGACY2MODERN can support the following capabilities.
 
 Examples:
 
-```text
-Legacy Java Framework
-        │
-        ▼
-AI Analysis
-        │
-        ▼
-Intermediate Representation
-        │
-        ▼
-Target Architecture
-        │
-        ▼
-Modern Java Framework
+```mermaid
+flowchart TB
+    n0["Legacy Java Framework"]
+    n1["AI Analysis"]
+    n2["Intermediate Representation"]
+    n3["Target Architecture"]
+    n4["Modern Java Framework"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
 ```
 
 Potential targets:
@@ -247,55 +244,26 @@ Potential targets:
 
 ## High-Level Architecture
 
-```text
-                       ┌─────────────────────┐
-                       │     Developer       │
-                       │    / Architect      │
-                       └──────────┬──────────┘
-                                  │
-                                  ▼
-                       ┌─────────────────────┐
-                       │ Modernization UI    │
-                       │ CLI / Web / IDE     │
-                       └──────────┬──────────┘
-                                  │
-                                  ▼
-                       ┌─────────────────────┐
-                       │ Modernization API   │
-                       └──────────┬──────────┘
-                                  │
-                                  ▼
-                 ┌────────────────────────────────┐
-                 │      AI Agent Orchestrator     │
-                 │                                │
-                 │ LangGraph / AutoGen / AOP      │
-                 └───────────────┬────────────────┘
-                                 │
-          ┌──────────────────────┼──────────────────────┐
-          │                      │                      │
-          ▼                      ▼                      ▼
- ┌────────────────┐     ┌────────────────┐     ┌────────────────┐
- │ Code Analysis  │     │ Architecture   │     │ Transformation │
- │ Agent          │     │ Agent          │     │ Agent          │
- └───────┬────────┘     └───────┬────────┘     └───────┬────────┘
-         │                      │                      │
-         └──────────────────────┼──────────────────────┘
-                                │
-                                ▼
-                    ┌─────────────────────────┐
-                    │ Knowledge / Vector DB   │
-                    │ PostgreSQL / Qdrant     │
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │ Legacy Source Repository │
-                    └────────────┬────────────┘
-                                 │
-                                 ▼
-                    ┌─────────────────────────┐
-                    │ Modernized Source Code   │
-                    └─────────────────────────┘
+```mermaid
+flowchart LR
+    dev["Developer / Architect"] --> ui["CLI / Web / IDE"]
+    ui --> api["Modernization API"]
+    api --> orch["Workflow orchestrator"]
+    repo["Legacy repository snapshot"] --> analysis["Discovery and semantic analysis"]
+    orch --> analysis
+    analysis --> evidence["Versioned evidence and architecture model"]
+    evidence --> planner["AI-assisted planning"]
+    orch --> planner
+    planner --> review{"Architecture approved?"}
+    review -->|Revise| planner
+    review -->|Yes| transform["Recipes and code changes in isolated workspace"]
+    transform --> checks["Build, tests and architecture checks"]
+    checks -->|Fail| transform
+    checks -->|Pass| pr["Reviewable change and traceability report"]
+    knowledge["Curated knowledge / retrieval"] -.-> planner
+    models["Approved model gateway"] -.-> planner
+    models -.-> transform
+    orch --> transform
 ```
 
 ---
@@ -352,20 +320,17 @@ Responsibilities:
 
 Produces:
 
-```text
-Current State
-     │
-     ▼
-Modernization Gap
-     │
-     ▼
-Target Architecture
-     │
-     ▼
-Migration Strategy
-     │
-     ▼
-Migration Tasks
+```mermaid
+flowchart TB
+    n0["Current State"]
+    n1["Modernization Gap"]
+    n2["Target Architecture"]
+    n3["Migration Strategy"]
+    n4["Migration Tasks"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
 ```
 
 ### Code Transformation Agent
@@ -392,72 +357,38 @@ Generates:
 
 Compares:
 
-```text
-Legacy Behavior
-       │
-       ▼
-Test Oracle
-       │
-       ▼
-Modern Behavior
-       │
-       ▼
-Semantic Comparison
+```mermaid
+flowchart LR
+    cases["Scenarios and independent oracle"] --> legacy["Legacy behavior"]
+    cases --> modern["Modern behavior"]
+    legacy --> compare["Behavior comparison"]
+    modern --> compare
 ```
 
 ---
 
 # Legacy Modernization Pipeline
 
-```text
-┌─────────────────────┐
-│ Legacy Repository   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Repository Discovery│
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Static Analysis     │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Architecture Mining │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Business Analysis   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Modernization Plan  │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Code Transformation │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Test Generation     │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Validation          │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Modernized System   │
-└─────────────────────┘
+```mermaid
+flowchart TB
+    source["Pin source commit and dependencies"] --> discover["Inventory and static analysis"]
+    discover --> baseline["Characterization tests and behavior baseline"]
+    baseline --> architecture["Recover boundaries and business rules"]
+    architecture --> plan["Select target and document ADR"]
+    plan --> approval{"Plan reviewed?"}
+    approval -->|Revise| plan
+    approval -->|Yes| change["Apply one incremental transformation"]
+    change --> build["Compile and run differential tests"]
+    build --> gate{"Behavior and quality gates pass?"}
+    gate -->|No| fix["Diagnose, repair or revert increment"]
+    fix --> change
+    gate -->|Yes| review["Human review of diff and evidence"]
+    review --> rollout["Controlled rollout"]
+    rollout --> health{"Operational checks pass?"}
+    health -->|No| rollback["Rollback using tested recovery plan"]
+    health -->|Yes| next{"More increments?"}
+    next -->|Yes| change
+    next -->|No| done["Validated modern system"]
 ```
 
 ---
@@ -503,37 +434,29 @@ The platform should reconstruct an architecture model from source code.
 
 Example:
 
-```text
-Legacy Monolith
-│
-├── Presentation
-│
-├── Business Logic
-│
-├── Persistence
-│
-├── Integration
-│
-└── Shared Utilities
+```mermaid
+flowchart TB
+    legacy["Observed legacy monolith: example"] --> presentation["Presentation"]
+    legacy --> business["Business logic"]
+    legacy --> persistence["Persistence"]
+    legacy --> integration["Integration"]
+    legacy --> shared["Shared utilities"]
 ```
 
 AI can then propose:
 
-```text
-Modern Architecture
-│
-├── API Gateway
-│
-├── Customer Service
-│
-├── Order Service
-│
-├── Payment Service
-│
-├── Notification Service
-│
-└── Data Services
+```mermaid
+flowchart TB
+    target["Candidate target: validate domain boundaries"] --> customer["Customer module"]
+    target --> order["Order module"]
+    target --> payment["Payment module"]
+    target --> notification["Notification module"]
+    target --> decision{"Separate deployment justified?"}
+    decision -->|No| modular["Modular monolith"]
+    decision -->|Yes| services["Services with explicit contracts"]
 ```
+
+A modular monolith is a valid target; service extraction requires an operational and business justification.
 
 The architecture proposal must remain subject to human architectural approval.
 
@@ -545,44 +468,48 @@ The architecture proposal must remain subject to human architectural approval.
 
 ### 1. Syntax Transformation
 
-```text
-Legacy Syntax
-      ↓
-AST
-      ↓
-Modern Syntax
+```mermaid
+flowchart TB
+    n0["Legacy Syntax"]
+    n1["AST"]
+    n2["Modern Syntax"]
+    n0 --> n1
+    n1 --> n2
 ```
 
 ### 2. API Transformation
 
-```text
-Legacy API
-    ↓
-Mapping Rules
-    ↓
-Modern API
+```mermaid
+flowchart TB
+    n0["Legacy API"]
+    n1["Mapping Rules"]
+    n2["Modern API"]
+    n0 --> n1
+    n1 --> n2
 ```
 
 ### 3. Framework Transformation
 
-```text
-Legacy Framework
-       ↓
-Framework Knowledge Base
-       ↓
-Modern Framework
+```mermaid
+flowchart TB
+    n0["Legacy Framework"]
+    n1["Framework Knowledge Base"]
+    n2["Modern Framework"]
+    n0 --> n1
+    n1 --> n2
 ```
 
 ### 4. Architectural Transformation
 
-```text
-Monolith
-   ↓
-Domain Analysis
-   ↓
-Bounded Contexts
-   ↓
-Services
+```mermaid
+flowchart TB
+    n0["Monolith"]
+    n1["Domain Analysis"]
+    n2["Bounded Contexts"]
+    n3["Services"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
 ```
 
 ---
@@ -591,42 +518,33 @@ Services
 
 A key architectural capability should be an intermediate software representation.
 
-```text
-Source Code
-     │
-     ▼
-Language Parser
-     │
-     ▼
-AST
-     │
-     ▼
-Semantic Model
-     │
-     ▼
-Architecture Model
-     │
-     ▼
-Target Code
+```mermaid
+flowchart TB
+    n0["Source Code"]
+    n1["Language Parser"]
+    n2["AST"]
+    n3["Semantic Model"]
+    n4["Architecture Model"]
+    n5["Target Code"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
 ```
 
 The intermediate model enables multiple source-to-target transformations.
 
 For example:
 
-```text
-Java Legacy
-      │
-      ▼
-Intermediate Model
-      │
-      ├──► Spring Boot
-      │
-      ├──► Quarkus
-      │
-      ├──► Micronaut
-      │
-      └──► Jakarta EE
+```mermaid
+flowchart LR
+    source["Java / C# legacy"] --> model["Semantic intermediate model"]
+    model --> spring["Spring Boot"]
+    model --> quarkus["Quarkus"]
+    model --> micronaut["Micronaut"]
+    model --> jakarta["Jakarta EE"]
+    model --> net["ASP.NET Core"]
 ```
 
 ---
@@ -716,18 +634,19 @@ Recommended technologies:
 
 Capabilities:
 
-```text
-Source
- ↓
-Parser
- ↓
-AST
- ↓
-Semantic Analysis
- ↓
-Dependency Graph
- ↓
-Quality Metrics
+```mermaid
+flowchart TB
+    n0["Source"]
+    n1["Parser"]
+    n2["AST"]
+    n3["Semantic Analysis"]
+    n4["Dependency Graph"]
+    n5["Quality Metrics"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
 ```
 
 ---
@@ -925,24 +844,15 @@ Recommended tools:
 
 Potential transformations:
 
-```text
-Java EE
-   ↓
-Jakarta EE
-
-Legacy Spring
-   ↓
-Spring Boot
-
-Servlet Application
-   ↓
-REST API
-
-Monolith
-   ↓
-Modular Monolith
-   ↓
-Microservices
+```mermaid
+flowchart LR
+    ee["Java EE"] --> jakarta["Compatible Jakarta EE target"]
+    spring["Legacy Spring"] --> boot["Spring Boot"]
+    servlet["Servlet application"] --> api["Reviewed REST API design"]
+    mono["Monolith"] --> modular["Modular monolith"]
+    modular --> decision{"Independent deployment justified?"}
+    decision -->|Yes| services["Microservices"]
+    decision -->|No| keep["Retain modular monolith"]
 ```
 
 ---
@@ -953,23 +863,19 @@ OpenRewrite can serve as a deterministic transformation engine.
 
 Recommended architecture:
 
-```text
-AI Agent
-    │
-    ▼
-Transformation Plan
-    │
-    ▼
-OpenRewrite Recipe
-    │
-    ▼
-Source Transformation
-    │
-    ▼
-Compilation
-    │
-    ▼
-Tests
+```mermaid
+flowchart TB
+    n0["AI Agent"]
+    n1["Transformation Plan"]
+    n2["OpenRewrite Recipe"]
+    n3["Source Transformation"]
+    n4["Compilation"]
+    n5["Tests"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
 ```
 
 AI should generate or select transformations, while deterministic rewrite engines execute predictable source changes.
@@ -991,16 +897,17 @@ Recommended:
 
 Testing strategy:
 
-```text
-Characterization Tests
-        ↓
-Transformation
-        ↓
-Regression Tests
-        ↓
-Integration Tests
-        ↓
-Behavior Comparison
+```mermaid
+flowchart TB
+    n0["Characterization Tests"]
+    n1["Transformation"]
+    n2["Regression Tests"]
+    n3["Integration Tests"]
+    n4["Behavior Comparison"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
 ```
 
 ---
@@ -1057,28 +964,29 @@ Recommended:
 
 Example pipeline:
 
-```text
-Commit
-  ↓
-Build
-  ↓
-Static Analysis
-  ↓
-AI Modernization Agent
-  ↓
-Transformation
-  ↓
-Compile
-  ↓
-Unit Tests
-  ↓
-Integration Tests
-  ↓
-Security Scan
-  ↓
-Artifact
-  ↓
-Deployment
+```mermaid
+flowchart TB
+    n0["Commit"]
+    n1["Build"]
+    n2["Static Analysis"]
+    n3["AI Modernization Agent"]
+    n4["Transformation"]
+    n5["Compile"]
+    n6["Unit Tests"]
+    n7["Integration Tests"]
+    n8["Security Scan"]
+    n9["Artifact"]
+    n10["Deployment"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
+    n5 --> n6
+    n6 --> n7
+    n7 --> n8
+    n8 --> n9
+    n9 --> n10
 ```
 
 ---
@@ -1354,23 +1262,19 @@ The current project already contains an `MBSE/CAS` structure and references Arca
 
 ## Model-Based Modernization
 
-```text
-Legacy Software
-       │
-       ▼
-Source Analysis
-       │
-       ▼
-Architecture Model
-       │
-       ▼
-System Model
-       │
-       ▼
-Target Architecture
-       │
-       ▼
-Modern Implementation
+```mermaid
+flowchart TB
+    n0["Legacy Software"]
+    n1["Source Analysis"]
+    n2["Architecture Model"]
+    n3["System Model"]
+    n4["Target Architecture"]
+    n5["Modern Implementation"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
 ```
 
 Potential models:
@@ -1389,19 +1293,15 @@ Potential models:
 
 A future architecture may connect:
 
-```text
-Software Engineering
-        │
-        ▼
-JFXLEGACY2MODERN
-        │
- ┌──────┼────────┐
- │      │        │
- ▼      ▼        ▼
-MBSE   CAD      CAS
- │      │        │
- ▼      ▼        ▼
-System Engineering
+```mermaid
+flowchart LR
+    software["Software engineering"] --> platform["JFXLEGACY2MODERN"]
+    platform --> mbse["MBSE"]
+    platform --> cad["CAD"]
+    platform --> cas["CAS"]
+    mbse --> systems["System engineering constraints"]
+    cad --> systems
+    cas --> systems
 ```
 
 This allows modernization decisions to consider not only source code but also system-level engineering constraints.
@@ -1517,7 +1417,7 @@ Exact versions used for a release should be recorded in the dependency matrix be
 Clone the repository:
 
 ```bash
-git clone https://github.com/robotics-intelligent-systems/jfxlegacy2modern.git
+git clone https://github.com/sdk2035/jfxlegacy2modern.git
 cd jfxlegacy2modern
 ```
 
@@ -1587,47 +1487,48 @@ jfxlegacy2modern/
 
 A production deployment can execute modernization jobs independently.
 
-```text
-Kubernetes Cluster
-│
-├── API Gateway
-│
-├── Agent Orchestrator
-│
-├── Analysis Workers
-│
-├── Transformation Workers
-│
-├── Test Workers
-│
-├── Validation Workers
-│
-├── LLM Gateway
-│
-├── Vector Database
-│
-├── PostgreSQL
-│
-└── Observability
+```mermaid
+flowchart LR
+    subgraph control["Proposed cluster: control plane"]
+        api["API"] --> orchestrator["Workflow orchestrator"]
+    end
+    subgraph workers["Isolated execution jobs"]
+        analysis["Analysis"]
+        transformation["Transformation"]
+        tests["Build and validation"]
+    end
+    orchestrator --> analysis
+    orchestrator --> transformation
+    orchestrator --> tests
+    orchestrator --> gateway["Model gateway"]
+    orchestrator --> metadata[("PostgreSQL metadata")]
+    orchestrator --> retrieval[("Retrieval store")]
+    workers -.-> telemetry["Observability"]
 ```
 
 ## Job-Based Modernization
 
 Each modernization request becomes a workflow:
 
-```text
-Modernization Request
-        │
-        ▼
-Kubernetes Job
-        │
-        ├── Analysis
-        ├── Architecture
-        ├── Planning
-        ├── Transformation
-        ├── Compilation
-        ├── Testing
-        └── Validation
+```mermaid
+flowchart TB
+    n0["Modernization Request"]
+    n1["Kubernetes Job"]
+    n2["Analysis"]
+    n3["Architecture"]
+    n4["Planning"]
+    n5["Transformation"]
+    n6["Compilation"]
+    n7["Testing"]
+    n8["Validation"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
+    n5 --> n6
+    n6 --> n7
+    n7 --> n8
 ```
 
 This approach allows multiple modernization projects to run independently.
@@ -1655,15 +1556,12 @@ Security controls should include:
 
 For confidential systems:
 
-```text
-Enterprise Repository
-        │
-        ▼
-Private AI Infrastructure
-        │
-        ├── Local LLM
-        ├── Private Vector DB
-        └── Private Agent Runtime
+```mermaid
+flowchart LR
+    repo["Enterprise repository"] --> boundary["Private execution boundary"]
+    boundary --> runtime["Isolated agent runtime"]
+    runtime --> llm["Approved local model"]
+    runtime --> db["Private retrieval store"]
 ```
 
 External AI providers should only receive source code when explicitly authorized.
@@ -1676,26 +1574,21 @@ AI-generated modernization must not be treated as automatically correct.
 
 Every transformation should pass through:
 
-```text
-AI Proposal
-     │
-     ▼
-Deterministic Transformation
-     │
-     ▼
-Compilation
-     │
-     ▼
-Automated Tests
-     │
-     ▼
-Static Analysis
-     │
-     ▼
-Human Review
-     │
-     ▼
-Approval
+```mermaid
+flowchart TB
+    n0["AI Proposal"]
+    n1["Deterministic Transformation"]
+    n2["Compilation"]
+    n3["Automated Tests"]
+    n4["Static Analysis"]
+    n5["Human Review"]
+    n6["Approval"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
+    n5 --> n6
 ```
 
 ---
@@ -1706,33 +1599,26 @@ Approval
 
 Before migration:
 
-```text
-Legacy Application
-       │
-       ▼
-Characterization Tests
-       │
-       ▼
-Behavior Baseline
+```mermaid
+flowchart TB
+    n0["Legacy Application"]
+    n1["Characterization Tests"]
+    n2["Behavior Baseline"]
+    n0 --> n1
+    n1 --> n2
 ```
 
 The baseline becomes the reference for the modern implementation.
 
 ## Regression Testing
 
-```text
-Legacy
-  │
-  ├── Test A
-  ├── Test B
-  └── Test C
-          │
-          ▼
-Modern
-  │
-  ├── Test A
-  ├── Test B
-  └── Test C
+```mermaid
+flowchart LR
+    suite["Shared scenarios and independent expected results"] --> legacy["Legacy execution"]
+    suite --> modern["Modern execution"]
+    legacy --> comparison["Compare outputs and side effects"]
+    modern --> comparison
+    comparison --> report["Differences and review evidence"]
 ```
 
 ## Semantic Validation
@@ -1769,44 +1655,33 @@ The system should compare:
 
 Recommended pipeline:
 
-```text
-Git Push
-   │
-   ▼
-Static Analysis
-   │
-   ▼
-Dependency Scan
-   │
-   ▼
-AI Analysis
-   │
-   ▼
-Modernization Plan
-   │
-   ▼
-Transformation
-   │
-   ▼
-Build
-   │
-   ▼
-Unit Tests
-   │
-   ▼
-Integration Tests
-   │
-   ▼
-Security Tests
-   │
-   ▼
-Architecture Validation
-   │
-   ▼
-Human Approval
-   │
-   ▼
-Release
+```mermaid
+flowchart TB
+    n0["Git Push"]
+    n1["Static Analysis"]
+    n2["Dependency Scan"]
+    n3["AI Analysis"]
+    n4["Modernization Plan"]
+    n5["Transformation"]
+    n6["Build"]
+    n7["Unit Tests"]
+    n8["Integration Tests"]
+    n9["Security Tests"]
+    n10["Architecture Validation"]
+    n11["Human Approval"]
+    n12["Release"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
+    n5 --> n6
+    n6 --> n7
+    n7 --> n8
+    n8 --> n9
+    n9 --> n10
+    n10 --> n11
+    n11 --> n12
 ```
 
 ---
@@ -2002,19 +1877,13 @@ https://github.com/sdk2035/Plantilla-de-repositorio
 
 JFXLEGACY2MODERN fits naturally into the broader Robotics Intelligent Systems software ecosystem.
 
-```text
-                         AI SOFTWARE ECOSYSTEM
-                                  │
-             ┌────────────────────┼────────────────────┐
-             │                    │                    │
-             ▼                    ▼                    ▼
-        JFXAI4ARCH            JFXAI4NLP        JFXLEGACY2MODERN
-        AI Platform           Language AI       Modernization AI
-             │                    │                    │
-             └────────────────────┼────────────────────┘
-                                  │
-                                  ▼
-                         AI Engineering Platform
+```mermaid
+flowchart TB
+    ecosystem["Proposed AI engineering ecosystem"] --> arch["JFXAI4ARCH"]
+    ecosystem --> nlp["JFXAI4NLP"]
+    ecosystem --> modern["JFXLEGACY2MODERN"]
+    arch -.-> modern
+    nlp -.-> modern
 ```
 
 ### JFXAI4ARCH
@@ -2052,25 +1921,15 @@ Provides:
 
 The projects can converge toward an integrated architecture:
 
-```text
-                     Enterprise Systems
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │ JFXAI4ARCH      │
-                   │ AI Platform     │
-                   └────────┬────────┘
-                            │
-          ┌─────────────────┼─────────────────┐
-          │                 │                 │
-          ▼                 ▼                 ▼
-       NLP/LLM          Agents/MCP       Modernization
-          │                 │                 │
-          ▼                 ▼                 ▼
-    JFXAI4NLP         AI Orchestration   JFXLEGACY2MODERN
-                                              │
-                                              ▼
-                                       Legacy Systems
+```mermaid
+flowchart TB
+    enterprise["Enterprise systems"] --> platform["JFXAI4ARCH: proposed AI platform"]
+    platform --> nlp["JFXAI4NLP: language services"]
+    platform --> agents["Agent orchestration / MCP"]
+    platform --> modernization["JFXLEGACY2MODERN"]
+    legacy["Legacy systems"] --> modernization
+    nlp -.-> modernization
+    agents -.-> modernization
 ```
 
 ---
@@ -2105,21 +1964,22 @@ AI Agents + Deterministic Transformations
 
 ## Level 5 — Autonomous Engineering
 
-```text
-Discovery
-   ↓
-Planning
-   ↓
-Transformation
-   ↓
-Testing
-   ↓
-Validation
-   ↓
-Deployment
+```mermaid
+flowchart TB
+    n0["Discovery"]
+    n1["Planning"]
+    n2["Transformation"]
+    n3["Testing"]
+    n4["Validation"]
+    n5["Deployment"]
+    n0 --> n1
+    n1 --> n2
+    n2 --> n3
+    n3 --> n4
+    n4 --> n5
 ```
 
-Human approval remains available for high-risk decisions.
+Human review is required before high-risk architectural changes and production deployment.
 
 ---
 
@@ -2140,23 +2000,16 @@ Legacy Technology
 
 Example:
 
-```text
-Java EE 7
-   │
-   ├── javax.*
-   │
-   ├── Servlet
-   │
-   └── JPA
-        │
-        ▼
-Jakarta EE
-   │
-   ├── jakarta.*
-   │
-   ├── Modern Servlet
-   │
-   └── Jakarta Persistence
+```mermaid
+flowchart LR
+    legacy["Java EE 7"] --> servlet["Servlet API"]
+    legacy --> jpa["JPA API"]
+    servlet --> smap["Version-specific migration recipe"]
+    jpa --> pmap["Version-specific migration recipe"]
+    smap --> target["Jakarta Servlet target"]
+    pmap --> persistence["Jakarta Persistence target"]
+    namespace["Enterprise javax to jakarta only where required"] -.-> smap
+    namespace -.-> pmap
 ```
 
 This knowledge can become a reusable modernization asset.
@@ -2268,44 +2121,14 @@ JFXLEGACY2MODERN can evolve from an AI-powered code migration tool into a comple
 
 Its central architecture is:
 
-```text
-             LEGACY SYSTEM
-                   │
-                   ▼
-          ┌─────────────────┐
-          │ AI DISCOVERY     │
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ CODE ANALYSIS    │
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ ARCHITECTURE     │
-          │ RECOVERY         │
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ MODERNIZATION    │
-          │ PLANNING         │
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ AI TRANSFORMATION│
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ BUILD + TEST     │
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ SEMANTIC         │
-          │ VALIDATION       │
-          └────────┬────────┘
-                   ▼
-          ┌─────────────────┐
-          │ MODERN SYSTEM    │
-          └─────────────────┘
+```mermaid
+flowchart LR
+    legacy["Legacy system"] --> discovery["Discovery and code analysis"]
+    discovery --> recovery["Architecture recovery and UML evidence"]
+    recovery --> plan["Reviewed modernization plan"]
+    plan --> change["Incremental transformation"]
+    change --> tests["Build and behavior validation"]
+    tests --> modern["Validated modern system"]
 ```
 
 The strategic value of the platform is therefore not limited to generating new code. Its principal objective is to create a **traceable engineering process from legacy software discovery to validated modern architecture**, combining AI agents, deterministic transformations, software analysis, testing, architecture modeling and human governance.
