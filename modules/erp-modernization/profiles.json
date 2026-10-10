@@ -1,0 +1,262 @@
+{
+  "schema_version": "jfxlegacy2modern.erp-profiles.v1",
+  "artifact_kind": "design_specification",
+  "executable": false,
+  "products": [
+    {
+      "id": "odoo-community",
+      "display_name": "Odoo Community",
+      "repository": "https://github.com/odoo/odoo",
+      "qualification_status": "proposed",
+      "version_tested": null,
+      "source_adapter_implemented": false,
+      "target_adapter_implemented": false
+    },
+    {
+      "id": "erpnext",
+      "display_name": "ERPNext",
+      "repository": "https://github.com/frappe/erpnext",
+      "qualification_status": "proposed",
+      "version_tested": null,
+      "source_adapter_implemented": false,
+      "target_adapter_implemented": false
+    },
+    {
+      "id": "flectra",
+      "display_name": "Flectra",
+      "repository": "https://gitlab.com/flectra-hq/flectra",
+      "qualification_status": "proposed",
+      "version_tested": null,
+      "source_adapter_implemented": false,
+      "target_adapter_implemented": false
+    },
+    {
+      "id": "dolibarr",
+      "display_name": "Dolibarr",
+      "repository": "https://github.com/Dolibarr/dolibarr",
+      "qualification_status": "proposed",
+      "version_tested": null,
+      "source_adapter_implemented": false,
+      "target_adapter_implemented": false
+    },
+    {
+      "id": "tryton",
+      "display_name": "Tryton",
+      "repository": "https://www.tryton.org/",
+      "qualification_status": "proposed",
+      "version_tested": null,
+      "source_adapter_implemented": false,
+      "target_adapter_implemented": false
+    },
+    {
+      "id": "idempiere",
+      "display_name": "iDempiere",
+      "repository": "https://idempiere.org/",
+      "qualification_status": "proposed",
+      "version_tested": null,
+      "source_adapter_implemented": false,
+      "target_adapter_implemented": false
+    }
+  ],
+  "routes": [
+    {
+      "id": "odoo-community-11-to-15",
+      "kind": "same_product_upgrade",
+      "status": "proposed",
+      "source": {
+        "product": "odoo-community",
+        "version": "11.0"
+      },
+      "target": {
+        "product": "odoo-community",
+        "version": "15.0"
+      },
+      "steps": [
+        {
+          "from_version": "11.0",
+          "to_version": "12.0",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        },
+        {
+          "from_version": "12.0",
+          "to_version": "13.0",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        },
+        {
+          "from_version": "13.0",
+          "to_version": "14.0",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        },
+        {
+          "from_version": "14.0",
+          "to_version": "15.0",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        }
+      ],
+      "requirements": [
+        "ERP-01",
+        "ERP-02",
+        "ERP-05",
+        "ERP-07",
+        "ERP-08",
+        "ERP-10",
+        "ERP-12"
+      ]
+    },
+    {
+      "id": "erpnext-11-to-15",
+      "kind": "same_product_upgrade",
+      "status": "proposed",
+      "source": {
+        "product": "erpnext",
+        "version": "11"
+      },
+      "target": {
+        "product": "erpnext",
+        "version": "15"
+      },
+      "steps": [
+        {
+          "from_version": "11",
+          "to_version": "12",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        },
+        {
+          "from_version": "12",
+          "to_version": "13",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        },
+        {
+          "from_version": "13",
+          "to_version": "14",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        },
+        {
+          "from_version": "14",
+          "to_version": "15",
+          "recipe_revision": null,
+          "runtime_revision": null,
+          "module_coverage": "pending",
+          "evidence_refs": [],
+          "exit_gates": [
+            "backup_restore_verified",
+            "critical_processes_pass",
+            "reconciliation_accepted"
+          ],
+          "status": "proposed"
+        }
+      ],
+      "requirements": [
+        "ERP-01",
+        "ERP-02",
+        "ERP-05",
+        "ERP-07",
+        "ERP-08",
+        "ERP-10",
+        "ERP-12"
+      ]
+    },
+    {
+      "id": "odoo-11-to-erpnext-15",
+      "kind": "cross_product_migration",
+      "status": "proposed",
+      "source": {
+        "product": "odoo-community",
+        "version": "11.0"
+      },
+      "target": {
+        "product": "erpnext",
+        "version": "15",
+        "framework": "frappe",
+        "framework_major": "15"
+      },
+      "source_upgrade_required": false,
+      "mapping_revision": null,
+      "history_strategy": "pending_per_entity",
+      "data_scope": [
+        "companies",
+        "parties",
+        "products",
+        "accounts",
+        "stock",
+        "open_documents",
+        "attachments"
+      ],
+      "evidence_refs": [],
+      "requirements": [
+        "ERP-01",
+        "ERP-02",
+        "ERP-03",
+        "ERP-04",
+        "ERP-06",
+        "ERP-07",
+        "ERP-08",
+        "ERP-11",
+        "ERP-12"
+      ]
+    }
+  ]
+}
