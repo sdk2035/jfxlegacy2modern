@@ -368,3 +368,8 @@ Trazabilidad propuesta: `commit + ubicación → AST por lenguaje → hecho M3 �
 5. Compilación y pruebas diferenciales del código emitido con versiones fijadas; registrar efectos sobre datos y contratos.
 
 Entregables futuros: esquema de IR, contrato de adaptadores, módulos Rascal, fixtures, mapeos UML y reporte de procedencia. Estos son criterios de implementación futura, no resultados obtenidos en esta actualización documental.
+
+
+## 11. Extensión ERP y módulo low-code
+
+La [especificación ERP](erp-modernization.md) incorpora soporte operativo, upgrade dentro de Odoo/ERPNext y migración entre productos, incluyendo ejemplos 11→15. Los módulos [erp-modernization](../modules/erp-modernization/README.md) y [erp-low-code](../modules/erp-low-code/README.md) separan el dominio de modernización de la dependencia Frappe. Los frontends ERP de Rascal, adaptadores, recetas y app low-code siguen pendientes de implementación y cualificación.

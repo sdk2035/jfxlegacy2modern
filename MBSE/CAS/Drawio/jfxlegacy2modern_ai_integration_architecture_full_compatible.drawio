@@ -1,8 +1,178 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" modified="2026-09-05T17:47:50Z" agent="OpenAI" version="31.4.2" type="device">
   <diagram id="jfxlegacy2modern-full" name="JFXLegacy2Modern AI Integration">
     <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
-      <root><mxCell id="0"/><mxCell id="1" parent="0"/><mxCell id="title" value="JFXLegacy2Modern — AI Integration Architecture" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=22;" vertex="1" parent="1"><mxGeometry x="40" y="25" width="1280" height="55" as="geometry"/></mxCell><mxCell id="sub" value="Legacy Modernization: Analyze → Plan → Transform → Validate → Incremental Migration" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;" vertex="1" parent="1"><mxGeometry x="40" y="85" width="1280" height="35" as="geometry"/></mxCell><mxCell id="u" value="Engineering Teams / Developers / Architects / Product Owners" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="40" y="150" width="280" height="75" as="geometry"/></mxCell><mxCell id="intake" value="Legacy Intake&lt;br&gt;Repositories • DB schemas • APIs • Docs • Binaries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="260" width="280" height="110" as="geometry"/></mxCell><mxCell id="gateway" value="API Gateway + IAM&lt;br&gt;OIDC • RBAC • Rate Limits • Audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="360" y="150" width="260" height="75" as="geometry"/></mxCell><mxCell id="agent" value="AI Modernization Plane&lt;br&gt;LLM Gateway • Agents • MCP • RAG • Guardrails" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="660" y="140" width="330" height="95" as="geometry"/></mxCell><mxCell id="llm" value="Open LLM Runtime&lt;br&gt;Ollama / vLLM • Llama / Qwen / Mistral" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="1030" y="140" width="290" height="95" as="geometry"/></mxCell><mxCell id="analyze" value="Legacy Analysis&lt;br&gt;AST • Static Analysis • Dependency Graph • Architecture Discovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="360" y="270" width="300" height="105" as="geometry"/></mxCell><mxCell id="knowledge" value="Knowledge Plane&lt;br&gt;Qdrant / pgvector • Migration Patterns • ADRs • Documentation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="700" y="270" width="300" height="105" as="geometry"/></mxCell><mxCell id="plan" value="Modernization Planner&lt;br&gt;Target Architecture • Risk • Cost • Sequence • Backlog" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="1040" y="270" width="280" height="105" as="geometry"/></mxCell><mxCell id="transform" value="Transformation Engine&lt;br&gt;AST Refactoring • Code Generation • Adapters • Strangler Facade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="430" width="300" height="115" as="geometry"/></mxCell><mxCell id="review" value="Human-in-the-Loop&lt;br&gt;Review • Approval • PR Generation • Traceability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="390" y="430" width="300" height="115" as="geometry"/></mxCell><mxCell id="validate" value="Validation &amp; Verification&lt;br&gt;Build • Unit • Integration • Contract • Regression • SAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1"><mxGeometry x="740" y="430" width="300" height="115" as="geometry"/></mxCell><mxCell id="security" value="Security &amp; Supply Chain&lt;br&gt;SBOM • Dependency Scan • Secrets • Policy Gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="1090" y="430" width="230" height="115" as="geometry"/></mxCell><mxCell id="anti" value="Modernization Boundary&lt;br&gt;API / Anti-Corruption Layer / Event Adapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="600" width="300" height="90" as="geometry"/></mxCell><mxCell id="modern" value="Modern Platform&lt;br&gt;Microservices • APIs • Containers • Cloud / Kubernetes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="390" y="590" width="300" height="110" as="geometry"/></mxCell><mxCell id="data2" value="Modern Data&lt;br&gt;PostgreSQL • Redis • Object Storage • Event Bus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="740" y="590" width="300" height="110" as="geometry"/></mxCell><mxCell id="gitops" value="Delivery Platform&lt;br&gt;GitHub • CI/CD • IaC • Helm • GitOps • Observability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="1090" y="590" width="230" height="110" as="geometry"/></mxCell><mxCell id="result" value="Incremental Rollout&lt;br&gt;Canary • Feature Flags • Monitoring • Rollback • Retirement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="390" y="745" width="650" height="90" as="geometry"/></mxCell><mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="u" target="gateway"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="gateway" target="agent"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="agent" target="llm"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="intake" target="analyze"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="analyze" target="knowledge"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="knowledge" target="plan"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="plan" target="transform"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="transform" target="review"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="review" target="validate"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="validate" target="security"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="validate" target="anti"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="security" target="gitops"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="anti" target="modern"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modern" target="data2"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="gitops" target="result"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modern" target="result"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="data2" target="result"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="agent" target="plan"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="agent" target="transform"><mxGeometry relative="1" as="geometry"/></mxCell><mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="intake" target="knowledge"><mxGeometry relative="1" as="geometry"/></mxCell></root>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="JFXLegacy2Modern — AI Integration Architecture" style="text;html=1;align=center;verticalAlign=middle;fontStyle=1;fontSize=22;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1280" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="Legacy Modernization: Analyze → Plan → Transform → Validate → Incremental Migration" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="1280" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="u" value="Engineering Teams / Developers / Architects / Product Owners" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="280" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="intake" value="Legacy Intake&lt;br&gt;Repositories • DB schemas • APIs • Docs • Binaries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="280" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" value="API Gateway + IAM&lt;br&gt;OIDC • RBAC • Rate Limits • Audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="150" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="agent" value="AI Modernization Plane&lt;br&gt;LLM Gateway • Agents • MCP • RAG • Guardrails" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="140" width="330" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" value="Open LLM Runtime&lt;br&gt;Ollama / vLLM • Llama / Qwen / Mistral" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="140" width="290" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="analyze" value="Legacy Analysis&lt;br&gt;AST • Static Analysis • Dependency Graph • Architecture Discovery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="360" y="270" width="300" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="knowledge" value="Knowledge Plane&lt;br&gt;Qdrant / pgvector • Migration Patterns • ADRs • Documentation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="700" y="270" width="300" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="plan" value="Modernization Planner&lt;br&gt;Target Architecture • Risk • Cost • Sequence • Backlog" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="270" width="280" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="transform" value="Transformation Engine&lt;br&gt;AST Refactoring • Code Generation • Adapters • Strangler Facade" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="review" value="Human-in-the-Loop&lt;br&gt;Review • Approval • PR Generation • Traceability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="390" y="430" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="validate" value="Validation &amp; Verification&lt;br&gt;Build • Unit • Integration • Contract • Regression • SAST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="740" y="430" width="300" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="security" value="Security &amp; Supply Chain&lt;br&gt;SBOM • Dependency Scan • Secrets • Policy Gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="430" width="230" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="anti" value="Modernization Boundary&lt;br&gt;API / Anti-Corruption Layer / Event Adapters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="modern" value="Modern Platform&lt;br&gt;Microservices • APIs • Containers • Cloud / Kubernetes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="390" y="590" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="data2" value="Modern Data&lt;br&gt;PostgreSQL • Redis • Object Storage • Event Bus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="740" y="590" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="gitops" value="Delivery Platform&lt;br&gt;GitHub • CI/CD • IaC • Helm • GitOps • Observability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="590" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="result" value="Incremental Rollout&lt;br&gt;Canary • Feature Flags • Monitoring • Rollback • Retirement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="390" y="745" width="650" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="u" target="gateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="gateway" target="agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="agent" target="llm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="intake" target="analyze">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="analyze" target="knowledge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="knowledge" target="plan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="plan" target="transform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="transform" target="review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="review" target="validate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="validate" target="security">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="validate" target="anti">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="security" target="gitops">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="anti" target="modern">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modern" target="data2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="gitops" target="result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modern" target="result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="data2" target="result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="agent" target="plan">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="agent" target="transform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="intake" target="knowledge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="erp-overview" name="01 · Soporte, migración ERP y low-code">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="01 · Soporte, migración ERP y low-code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Arquitectura propuesta · Ningún conector ni ejecutor ERP implementado · Rutas y dependencias sujetas a cualificación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="ERP ORIGEN&lt;br&gt;Odoo Community / ERPNext / Flectra&lt;br&gt;Dolibarr / Tryton / iDempiere&lt;br&gt;Producto + edición + revisión&lt;br&gt;Módulos, datos y procesos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="225" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="service" value="erp-modernization&lt;br&gt;Inventario, brechas y planificación&lt;br&gt;Upgrade por salto / mapeos entre ERP&lt;br&gt;Staging, conciliación y puertas&lt;br&gt;Corte, reversión y soporte" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="225" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="target" value="ERP DESTINO&lt;br&gt;Revisión y runtime fijados&lt;br&gt;Interfaces de negocio validadas&lt;br&gt;Procesos, permisos y localización&lt;br&gt;Pruebas + aceptación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="225" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="lc" value="erp-low-code · OPCIONAL EN NÚCLEO&lt;br&gt;Perfil con dependencia Frappe requerida&lt;br&gt;DocTypes, formularios y workflows&lt;br&gt;Módulo especificado, no instalado&lt;br&gt;LC-01…06" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="dep" value="DEPENDENCIAS EXTERNAS&lt;br&gt;Frappe 15: perfil low-code de ejemplo&lt;br&gt;ERPNext/Frappe/apps: fijar juntos&lt;br&gt;OpenUpgrade: solo worker Odoo&lt;br&gt;Pines y pruebas pendientes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="evidence" value="EVIDENCIA Y OPERACIÓN&lt;br&gt;Requisito → receta/mapeo → prueba&lt;br&gt;Saldos / stock / adjuntos / UAT&lt;br&gt;Backups y restauración ensayados&lt;br&gt;Runbook y aceptación del soporte" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="adaptadores" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="source" target="service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="carga / upgrade" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="service" target="target">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="depende de Frappe" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="lc" target="dep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="contratos" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="lc" target="service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="resultados" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="target" target="evidence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="Rascal MPL: análisis y reglas de código propuestos; frontends Python/XML/metadatos ERP por desarrollar.&lt;br&gt;Low-code configura y revisa; el adaptador destino conserva la semántica de negocio. Cada ruta incluye revisión de compatibilidad, datos y recuperación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="875" width="1520" height="90" as="geometry" />
+        </mxCell>
+      </root>
     </mxGraphModel>
   </diagram>
 </mxfile>

@@ -1,0 +1,45 @@
+{
+  "schema_version": "jfxlegacy2modern.module.v1",
+  "module_id": "erp-modernization",
+  "implementation_status": "proposed",
+  "artifact_kind": "design_specification",
+  "capabilities": [
+    "erp_inventory",
+    "operational_support",
+    "same_product_upgrade",
+    "cross_product_migration",
+    "reconciliation",
+    "cutover_and_rollback",
+    "evidence_registry"
+  ],
+  "core_dependency_on_low_code": false,
+  "optional_modules": [
+    "erp-low-code"
+  ],
+  "external_dependencies": [
+    {
+      "id": "openupgrade",
+      "scope": "odoo_upgrade_worker",
+      "required_for_selected_profile": true,
+      "repository": "https://github.com/OCA/OpenUpgrade",
+      "version_family": "per_upgrade_step",
+      "resolved_revision": null,
+      "version_tested": null,
+      "qualification_status": "proposed"
+    }
+  ],
+  "requirements": [
+    "ERP-01",
+    "ERP-02",
+    "ERP-03",
+    "ERP-04",
+    "ERP-05",
+    "ERP-06",
+    "ERP-07",
+    "ERP-08",
+    "ERP-09",
+    "ERP-10",
+    "ERP-11",
+    "ERP-12"
+  ]
+}

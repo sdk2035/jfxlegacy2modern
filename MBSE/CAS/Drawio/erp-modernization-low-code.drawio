@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" version="28.2.5">
+  <diagram id="erp-overview" name="01 · Soporte, migración ERP y low-code">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="01 · Soporte, migración ERP y low-code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Arquitectura propuesta · Ningún conector ni ejecutor ERP implementado · Rutas y dependencias sujetas a cualificación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="ERP ORIGEN&lt;br&gt;Odoo Community / ERPNext / Flectra&lt;br&gt;Dolibarr / Tryton / iDempiere&lt;br&gt;Producto + edición + revisión&lt;br&gt;Módulos, datos y procesos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="225" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="service" value="erp-modernization&lt;br&gt;Inventario, brechas y planificación&lt;br&gt;Upgrade por salto / mapeos entre ERP&lt;br&gt;Staging, conciliación y puertas&lt;br&gt;Corte, reversión y soporte" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="225" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="target" value="ERP DESTINO&lt;br&gt;Revisión y runtime fijados&lt;br&gt;Interfaces de negocio validadas&lt;br&gt;Procesos, permisos y localización&lt;br&gt;Pruebas + aceptación" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="225" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="lc" value="erp-low-code · OPCIONAL EN NÚCLEO&lt;br&gt;Perfil con dependencia Frappe requerida&lt;br&gt;DocTypes, formularios y workflows&lt;br&gt;Módulo especificado, no instalado&lt;br&gt;LC-01…06" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="dep" value="DEPENDENCIAS EXTERNAS&lt;br&gt;Frappe 15: perfil low-code de ejemplo&lt;br&gt;ERPNext/Frappe/apps: fijar juntos&lt;br&gt;OpenUpgrade: solo worker Odoo&lt;br&gt;Pines y pruebas pendientes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="evidence" value="EVIDENCIA Y OPERACIÓN&lt;br&gt;Requisito → receta/mapeo → prueba&lt;br&gt;Saldos / stock / adjuntos / UAT&lt;br&gt;Backups y restauración ensayados&lt;br&gt;Runbook y aceptación del soporte" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="adaptadores" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="source" target="service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="carga / upgrade" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="service" target="target">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="depende de Frappe" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="lc" target="dep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="contratos" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="lc" target="service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="resultados" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="target" target="evidence">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="Rascal MPL: análisis y reglas de código propuestos; frontends Python/XML/metadatos ERP por desarrollar.&lt;br&gt;Low-code configura y revisa; el adaptador destino conserva la semántica de negocio. Cada ruta incluye revisión de compatibilidad, datos y recuperación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="875" width="1520" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="erp-routes" name="02 · Rutas explícitas de versión y producto">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="02 · Rutas explícitas de versión y producto" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="11→15 son ejemplos de planificación. Confirmar mantenimiento y versiones exactas antes de elegir destino. Los saltos son propuestas, no compatibilidad probada." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="route0" value="UPGRADE ODOO COMMUNITY&lt;br&gt;11.0 → 12.0 → 13.0 → 14.0 → 15.0&lt;br&gt;OpenUpgrade por transición; cobertura de módulos y personalizaciones por comprobar." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=20;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="215" width="1520" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="route1" value="UPGRADE ERPNEXT&lt;br&gt;11 → 12 → 13 → 14 → 15&lt;br&gt;Revisar recetas, Frappe, Bench y apps por etapa; no asumir salto directo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=20;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="1520" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="route2" value="MIGRACIÓN ENTRE ERP&lt;br&gt;Odoo Community 11.0 → ERPNext 15&lt;br&gt;Extraer → modelo de intercambio → mapeos → carga destino. Sin upgrade Odoo previo obligatorio." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=20;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="585" width="1520" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="gates" value="POR SALTO / LOTE · respaldo y restauración → receta/mapeo fijados → sandbox → procesos críticos → conciliación → evidencia aceptada&lt;br&gt;Si falla una puerta, detener el avance. Históricos, saldos de apertura y archivo consultable se deciden por entidad; no son intercambiables." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=18;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="815" width="1520" height="145" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="erp-low-code" name="03 · Módulo low-code y límites de dependencia">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="03 · Módulo low-code y límites de dependencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Dependencia requerida del perfil erp-low-code: Frappe (MIT), familia 15 para el ejemplo ERPNext 15. Revisiones y version_tested pendientes." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="team" value="EQUIPO DE MODERNIZACIÓN&lt;br&gt;Negocio · TI · datos · QA · soporte&lt;br&gt;Perfiles y alcance aprobado&lt;br&gt;Revisión de cambios y resultados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="225" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ui" value="APP / INTERFAZ LOW-CODE&lt;br&gt;DocTypes y formularios propuestos&lt;br&gt;Migration Project / ERP Profile&lt;br&gt;Mapping Revision / Upgrade Step&lt;br&gt;Evidence Record / Support Case" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="225" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="frappe" value="FRAPPE · RUNTIME EXTERNO&lt;br&gt;Dependencia requerida del módulo&lt;br&gt;Modelo, permisos y workflows&lt;br&gt;Exportación de app/configuración&lt;br&gt;Framework por desplegar y probar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="225" width="450" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="contracts" value="CONTRATOS PROPUESTOS&lt;br&gt;Planes y revisión de mapeos&lt;br&gt;Aprobaciones acotadas&lt;br&gt;Consulta de evidencias y soporte&lt;br&gt;Identidad + revisión + auditoría" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f2ecff;strokeColor=#8060b0;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="executor" value="SERVICIO erp-modernization&lt;br&gt;Valida autorización y puertas&lt;br&gt;Orquesta adaptadores versionados&lt;br&gt;Controla lotes, errores y reintentos&lt;br&gt;No implementado en este cambio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="575" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="erp" value="ADAPTADOR DESTINO → ERP&lt;br&gt;Carga por interfaces de negocio&lt;br&gt;Permisos y idempotencia&lt;br&gt;Conciliación y errores en cuarentena&lt;br&gt;Sin SQL directo desde UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=17;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="600" width="450" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="team" target="ui">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="dependencia runtime" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="ui" target="frappe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="ui" target="contracts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="contracts" target="executor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeColor=#63778e;fontSize=14;" edge="1" parent="1" source="executor" target="erp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="Artefactos low-code en Git → revisión → exportación/importación sandbox → pruebas de permisos y regresión → aprobación → despliegue&lt;br&gt;Mantener pines Frappe/ERPNext/apps, reversión e historia. Un workflow visual no reemplaza las reglas ERP, las recetas ni las pruebas de datos." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=16;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="870" width="1520" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="req-3" name="04 · Requisitos ERP — inventario y migración">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="04 · Requisitos ERP — inventario y migración" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Todos los requisitos son propuestos. Responsables por rol; tolerancias, runtimes y parámetros de servicio deben aprobarse antes del ensayo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-01" value="ERP-01 · Inventario&lt;br&gt;Registrar producto, edición, versión exacta, módulos, código propio, datos, infraestructura y licencias." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="205" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-01" value="Responsable: TI&lt;br&gt;Aceptación: Inventario completo del alcance; exclusiones y dependencias aprobadas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="205" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-02" value="ERP-02 · Ruta y compatibilidad&lt;br&gt;Distinguir upgrade de producto, migración entre ERP y soporte operativo; fijar pasos y revisiones." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="285" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-02" value="Responsable: Arquitectura&lt;br&gt;Aceptación: Cada paso tiene receta, matriz de módulos, runtime y revisión; ninguna ruta se etiqueta validada sin ensayo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="285" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-03" value="ERP-03 · Modelo de intercambio&lt;br&gt;Versionar entidad, identidad externa, empresa, relaciones, unidades, moneda y procedencia." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="365" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-03" value="Responsable: Datos&lt;br&gt;Aceptación: Mapeos explícitos; claves duplicadas y referencias huérfanas detectadas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="365" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-04" value="ERP-04 · Equivalencia de negocio&lt;br&gt;Mapear procesos, permisos, personalizaciones y localización del origen al destino." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="445" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-04" value="Responsable: Negocio&lt;br&gt;Aceptación: Escenarios críticos aceptados; brechas y excepciones documentadas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="445" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-05" value="ERP-05 · Upgrade escalonado&lt;br&gt;Planificar 11→12→13→14→15 con validación y respaldo por salto." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="525" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-05" value="Responsable: Migración&lt;br&gt;Aceptación: Arranque, pruebas críticas y conciliación pasan en cada salto; fallos detienen el avance." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="525" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-06" value="ERP-06 · Importación entre productos&lt;br&gt;Usar adaptadores e interfaces de negocio del ERP destino y orden de dependencias." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="605" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-06" value="Responsable: Integraciones&lt;br&gt;Aceptación: Ensayo de carga aceptado; repetición idempotente; errores en cuarentena." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="605" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-07" value="ERP-07 · Conciliación&lt;br&gt;Comparar conteos, saldos, existencias, impuestos, monedas, series/lotes y adjuntos según alcance." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="685" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-07" value="Responsable: Datos + negocio&lt;br&gt;Aceptación: Tolerancias acordadas antes del ensayo; diferencias explicadas y aprobadas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="685" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-08" value="ERP-08 · Corte y reversión&lt;br&gt;Definir congelación, delta final, respaldo consistente, restauración y retorno al origen." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="765" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-08" value="Responsable: Operaciones&lt;br&gt;Aceptación: Ensayo de restauración y reversión aceptado; RTO/RPO y ventana aprobados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="765" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-09" value="ERP-09 · Soporte&lt;br&gt;Definir incidentes, severidad, responsables, monitoreo, recuperación, formación y transferencia." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="845" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-09" value="Responsable: Soporte&lt;br&gt;Aceptación: Runbook, escalado y niveles de servicio aprobados; traspaso operativo aceptado." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="845" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="Fuente → requisito → perfil / revisión → receta o mapeo → caso de prueba → evidencia → aprobación.&lt;br&gt;Ningún estado validated sin pruebas aceptadas. Ver docs/erp-modernization.md y modules/*/module.json." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="935" width="1520" height="55" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="req-4" name="05 · Requisitos ERP y low-code — soporte y dependencia">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="05 · Requisitos ERP y low-code — soporte y dependencia" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=25;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="25" width="1520" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Todos los requisitos son propuestos. Responsables por rol; tolerancias, runtimes y parámetros de servicio deben aprobarse antes del ensayo." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=15;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="1520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-10" value="ERP-10 · Versiones y mantenimiento&lt;br&gt;Registrar mantenimiento upstream y riesgos de cada revisión; revisar runtimes y apps separadas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="205" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-10" value="Responsable: TI&lt;br&gt;Aceptación: Estado revisado antes de decidir destino; 11 y 15 no se presuponen versiones recomendadas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="205" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-11" value="ERP-11 · Seguridad y acceso&lt;br&gt;Preservar autorización por empresa/rol y referencias de secretos; probar rechazo y auditoría." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="285" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-11" value="Responsable: Seguridad&lt;br&gt;Aceptación: Accesos no autorizados rechazados; sin secretos en manifiestos; actor y cambios auditables." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="285" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="ERP-12" value="ERP-12 · Trazabilidad&lt;br&gt;Relacionar fuente, requisito, mapeo/receta, caso, evidencia y aprobación." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="365" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-ERP-12" value="Responsable: QA&lt;br&gt;Aceptación: Todos los requisitos en alcance tienen evidencia o excepción aprobada." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="365" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="LC-01" value="LC-01 · Dependencia low-code&lt;br&gt;El módulo erp-low-code declara Frappe como dependencia runtime del perfil low-code." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="445" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-LC-01" value="Responsable: Arquitectura&lt;br&gt;Aceptación: Manifiesto identifica repositorio, licencia, familia de versión y estado no validado." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="445" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="LC-02" value="LC-02 · Configuración exportable&lt;br&gt;Versionar modelos, formularios, flujos, permisos y scripts como app/artefactos exportables." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="525" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-LC-02" value="Responsable: Low-code&lt;br&gt;Aceptación: Exportación e importación en sandbox reproducibles con revisión y procedencia." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="525" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="LC-03" value="LC-03 · Cambios revisables&lt;br&gt;Publicar configuraciones y scripts solo después de revisar y probar en destino." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="605" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-LC-03" value="Responsable: Low-code + QA&lt;br&gt;Aceptación: Cambios aprobados; reversión de app/configuración ensayada." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="605" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="LC-04" value="LC-04 · Compatibilidad de framework&lt;br&gt;Fijar conjuntamente revisiones Frappe, ERPNext y apps del perfil." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="685" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-LC-04" value="Responsable: TI&lt;br&gt;Aceptación: Pines inmutables, runtimes y regresiones validados antes de habilitar el perfil." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="685" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="LC-05" value="LC-05 · Frontera de integración&lt;br&gt;La interfaz low-code usa contratos del servicio; no escribe directamente BD del ERP." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="765" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-LC-05" value="Responsable: Integraciones&lt;br&gt;Aceptación: Pruebas de contratos y permisos pasan; importaciones usan adaptador destino." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="765" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="LC-06" value="LC-06 · Persistencia de artefactos&lt;br&gt;Conservar el historial de configuraciones, aprobaciones y evidencias tras el upgrade." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf2ff;strokeColor=#4276b8;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="845" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="a-LC-06" value="Responsable: Datos + QA&lt;br&gt;Aceptación: Artefactos e identidades reconstruibles; cambios incompatibles detectados." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf7f0;strokeColor=#388563;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="815" y="845" width="745" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="trace" value="Fuente → requisito → perfil / revisión → receta o mapeo → caso de prueba → evidencia → aprobación.&lt;br&gt;Ningún estado validated sin pruebas aceptadas. Ver docs/erp-modernization.md y modules/*/module.json." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5dd;strokeColor=#b78220;fontColor=#172d46;fontSize=13;align=left;verticalAlign=middle;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="935" width="1520" height="55" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

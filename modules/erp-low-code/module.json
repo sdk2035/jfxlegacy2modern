@@ -1,0 +1,63 @@
+{
+  "schema_version": "jfxlegacy2modern.module.v1",
+  "module_id": "erp-low-code",
+  "implementation_status": "proposed",
+  "artifact_kind": "design_specification",
+  "depends_on_modules": [
+    "erp-modernization"
+  ],
+  "external_dependencies": [
+    {
+      "id": "frappe",
+      "category": "low-code",
+      "dependency_type": "runtime",
+      "required": true,
+      "deployment_boundary": "external_framework_service",
+      "repository": "https://github.com/frappe/frappe",
+      "reference_ref": "version-15",
+      "version_family": "15",
+      "license": "MIT",
+      "license_source": "https://github.com/frappe/frappe/blob/version-15/LICENSE",
+      "resolved_revision": null,
+      "version_tested": null,
+      "qualification_status": "proposed"
+    }
+  ],
+  "candidate_erpnext_app": {
+    "required_only_for_erpnext_target_profile": true,
+    "repository": "https://github.com/frappe/erpnext",
+    "version_family": "15",
+    "resolved_revision": null,
+    "version_tested": null
+  },
+  "configuration_entities": [
+    "Migration Project",
+    "ERP Profile",
+    "Mapping Revision",
+    "Upgrade Step",
+    "Evidence Record",
+    "Support Case"
+  ],
+  "integration_contracts": [
+    "plan_submission",
+    "mapping_revision_review",
+    "gate_approval",
+    "evidence_query",
+    "support_case_tracking"
+  ],
+  "deployment_gates": [
+    "immutable_dependency_revisions",
+    "compatible_framework_erpnext_apps",
+    "export_import_verified",
+    "authorization_verified",
+    "rollback_verified"
+  ],
+  "requirements": [
+    "LC-01",
+    "LC-02",
+    "LC-03",
+    "LC-04",
+    "LC-05",
+    "LC-06"
+  ]
+}

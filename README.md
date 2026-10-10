@@ -25,6 +25,7 @@ See the [enterprise architecture and AI-assisted development reference](docs/ent
 - [Objectives](#objectives)
 - [Functional Scope](#functional-scope)
 - [Enterprise AI Development Reference](docs/enterprise-ai-reference.md)
+- [ERP Support, Migration, Upgrades and Low-Code](#erp-support-migration-upgrades-and-low-code)
 - [Architecture](#architecture)
 - [AI Agent Platform](#ai-agent-platform)
 - [Legacy Modernization Pipeline](#legacy-modernization-pipeline)
@@ -237,6 +238,16 @@ Potential targets:
 - REST APIs
 - microservices
 - event-driven systems
+
+---
+
+# ERP Support, Migration, Upgrades and Low-Code
+
+The proposed ERP extension covers operational support, cross-product migration and same-product upgrades. Initial reference profiles include Odoo Community, ERPNext, Flectra, Dolibarr, Tryton and iDempiere. Examples distinguish Odoo Community 11.0→15.0, ERPNext 11→15 and Odoo Community 11.0→ERPNext 15; these are planning examples, not validated compatibility claims or a recommendation to deploy historical versions.
+
+The [`erp-modernization`](modules/erp-modernization/README.md) module owns inventory, version-specific adapters/recipes, reconciliation, cutover, rollback and support evidence. The optional [`erp-low-code`](modules/erp-low-code/README.md) module explicitly declares **Frappe as a required external runtime dependency for its low-code profile**, with revision pinning and compatibility still pending. No ERP executor or Frappe app is implemented in this checkout.
+
+See the [ERP specification and requirements](docs/erp-modernization.md), [declarative profiles](modules/erp-modernization/profiles.json) and [editable Draw.io architecture](MBSE/CAS/Drawio/erp-modernization-low-code.drawio).
 
 ---
 
@@ -1141,6 +1152,8 @@ last_review:
 
 | Technology | Category | Core | Main Purpose |
 |---|---|---:|---|
+| Frappe | Low-code / Runtime | Required in erp-low-code profile | Proposed forms, models and approval workflows; not installed or tested |
+| OCA OpenUpgrade | ERP upgrade / Transformation | Odoo upgrade profile | Proposed version-specific Odoo upgrades; coverage must be qualified |
 | LangGraph | Agent | Yes | Agent orchestration |
 | AutoGen | Agent | Optional | Multi-agent workflows |
 | OpenHands | Coding Agent | Optional | Autonomous coding |
@@ -2069,6 +2082,16 @@ docs/dependencies/dependency-matrix.csv
 ---
 
 # Roadmap
+
+## ERP Modernization and Low-Code Extension
+
+- [x] ERP support, cross-product migration and 11→15 upgrade concept
+- [x] Declarative erp-modernization and erp-low-code module specifications
+- [x] Frappe dependency declaration and editable ERP architecture
+- [ ] Immutable runtime revisions and per-hop compatibility matrices
+- [ ] Odoo/ERPNext adapters, custom-module recipes and Frappe app
+- [ ] Staging migrations, reconciliation, UAT and restore/rollback evidence
+- [ ] Operational runbooks and accepted support handover
 
 ## Phase 1 — Repository Intelligence
 
